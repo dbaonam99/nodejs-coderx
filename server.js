@@ -1,8 +1,20 @@
 const express = require('express');
 const app = express();
 
+app.set('view engine', 'pug');
+app.set('views', './views');
+
 app.get('/', (request, response) => {
-  response.send('<ul>Todo list<li>Đi chợ</li><li>Nấu cơm</li><li>Rửa bát</li><li>Học coder.tokyo</li></ul>');
+  response.render('index', {
+    users: [
+      {
+        name: 'Nam'
+      },
+      {
+        name: 'Loc'
+      }
+    ]
+  });
 });
 
 
