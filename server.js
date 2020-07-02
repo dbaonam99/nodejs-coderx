@@ -6,10 +6,10 @@ app.set('views', './views');
 
 var arrUsers = [
 	{name: 'Nấu cơm'},
-	{name: 'học bài'}
-	{name: 'Loc'}
-	{name: 'Loc'}
-	{name: 'Loc'}
+	{name: 'học bài'},
+	{name: 'đi học'},
+	{name: 'chơi game'},
+	{name: 'dọn nhà'}
 ]
 
 app.get('/', (request, response) => {
@@ -18,18 +18,18 @@ app.get('/', (request, response) => {
   });
 });
 
-app.get('/users', (req, res) => {
-  res.render('users/index', 
-      users = arrUsers)
+app.get('/todos', (req, res) => {
+  res.render('todos/index', 
+      todos = arrUsers)
 })
 
-app.get('/users/todos', (req, res) => {
+app.get('/todos/search', (req, res) => {
   var q = req.query.q;
   var result = arrUsers.filter(function(user) {
     return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
   })
-  res.render('users/index', 
-      users = result)
+  res.render('todos/index', 
+      todos = result)
 })
 
 app.listen(process.env.PORT, () => {
