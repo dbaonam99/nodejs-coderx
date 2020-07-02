@@ -5,18 +5,10 @@ app.set('view engine', 'pug');
 app.set('views', './views');
 
 app.get('/', (request, response) => {
-  response.render('index', {
-    users: [
-      {
-        name: 'Nam'
-      },
-      {
-        name: 'Loc'
-      }
-    ]
-  });
+  response.send('Hello');
 });
 
+app.get('/')
 
 app.listen(process.env.PORT, () => {
   console.log("Server listening on port " + process.env.PORT);
