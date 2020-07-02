@@ -26,6 +26,15 @@ app.get('/users', (req, res) => {
       users = arrUsers)
 })
 
+app.get('/users/todos', (req, res) => {
+  var q = req.query.q;
+  var result = arrUsers.filter(function(user) {
+    return user.name.toLowerCase().indexOf(q.toLowerCase());
+  })
+  res.redner('users/index', 
+      users = result)
+})
+
 app.listen(process.env.PORT, () => {
   console.log("Server listening on port " + process.env.PORT);
 });
