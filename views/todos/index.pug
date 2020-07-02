@@ -1,6 +1,7 @@
-form(action="views/todos", mothod="GET")
+form(action="/todos/search", method="GET")
   input(type="text", name="q")
   button Search
-ul Todos
-	each doto in todos
-		li= todo.name
+  
+ul
+  each todo in todos
+    li= todo.name
