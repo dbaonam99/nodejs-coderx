@@ -5,14 +5,11 @@ app.set('view engine', 'pug');
 app.set('views', './views');
 
 var arrUsers = [
-	{
-		name: 'Nam',
-		age: 20
-	},
-	{
-		name: 'Loc',
-		age: 19
-	}
+	{name: 'Nấu cơm'},
+	{name: 'học bài'}
+	{name: 'Loc'}
+	{name: 'Loc'}
+	{name: 'Loc'}
 ]
 
 app.get('/', (request, response) => {
@@ -29,9 +26,9 @@ app.get('/users', (req, res) => {
 app.get('/users/todos', (req, res) => {
   var q = req.query.q;
   var result = arrUsers.filter(function(user) {
-    return user.name.toLowerCase().indexOf(q.toLowerCase());
+    return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
   })
-  res.redner('users/index', 
+  res.render('users/index', 
       users = result)
 })
 
