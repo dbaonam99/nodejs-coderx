@@ -32,6 +32,10 @@ app.get('/todos/search', (req, res) => {
       todos = result)
 })
 
+app.get('/todos/create', (req, res) => {
+  
+})
+
 app.listen(process.env.PORT, () => {
   console.log("Server listening on port " + process.env.PORT);
 });
