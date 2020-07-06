@@ -1,0 +1,26 @@
+h3 Books List
+form(action="/transaction/add", method="POST")
+  label Chọn sách
+  select(name="bookID")
+    each book in books
+      option= book.title
+  label Chọn người dùng
+  select(name="userID")
+    each user in users
+      option= user.name
+  input(name="isComplete", type="hidden", value="false")
+  button Thêm giao dịch
+
+p Transactions list:
+ul
+  each tran in trans
+    li
+      span= tran.bookID
+      span &nbsp
+      span= tran.userID
+      span &nbsp
+      a(href="/transaction/info/" + tran.id) More...
+      span &nbsp
+      a(href="/transaction/" + tran.id + "/complete")= tran.isComplete
+p
+  a(href="/") Home...

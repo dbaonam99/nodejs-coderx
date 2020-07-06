@@ -1,0 +1,10 @@
+h1 Infomation of the Transaction
+
+p Tên người dùng:
+  span= trans.userID
+p Tên sách: 
+  span= trans.bookID
+  
+form(action="/transaction/remove", method="POST")
+  input(name="id", type="hidden", value=trans.id)
+  button Delete transaction
