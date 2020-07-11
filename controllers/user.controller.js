@@ -18,8 +18,19 @@ module.exports.info = function(req, res) {
 
 module.exports.add = function(req, res) {
   req.body.id = shortid.generate();
-  db.get("users").push(req.body).write();
-  res.redirect('/users');
+  var errors = [];
+  console.log(req.body.name);
+  if (req.body.name.length > 10) {
+    errors.push('Không được nhập quá 10 ký tự');
+    res.render('users/index', {
+      errors: errors,
+      users: db.get("users").value()
+    })
+  } 
+  if (req.body.name.length <= 10){
+    db.get("users").push(req.body).write();
+    res.redirect('/users');
+  }
 };
 
 module.exports.set = function(req, res) {

@@ -1,17 +1,31 @@
-h3 Books List
-form(action="/books/add", method="POST")
-  label Title
-  input(type="text",name='title')
-  label Description 
-  input(type="text",name='des')
-  button Add
+extends ../layouts/common
+
+block content
+  h1 Books List
   
-p Books list:
-ul
-  each book in books
-    li
-      span= book.title
-      span &nbsp
-      a(href="/books/info/" + book.id) More...
-      
-a(href="/") Home...
+  form.d-flex.flex-column.w-5(action="/books/add", method="POST")
+    .form-group
+      label Title
+      input.form-control(type="text",name='title')
+    .form-group
+      label Description 
+      input.form-control(type="text",name='des')
+    button.btn.btn-primary.button Add new
+
+  table.table
+    thead-dark
+      tr.table
+        td(scope='col') Title
+        td(scope='col') Description
+    tbody
+      each book in books
+        tr
+          td(scope="row")
+            a(href="/books/info/" + book.id) 
+              span= book.title
+          td
+            a(href="/books/info/" + book.id)
+              span= book.des
+
+
+  a(href="/") Home...

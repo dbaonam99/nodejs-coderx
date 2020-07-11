@@ -19,12 +19,21 @@ module.exports.info = function(req, res) {
 };
 
 module.exports.complete = function(req, res) {
-  var id = req.params.id;
-	var transInfo = db.get('trans').find({id: id}).value();
-
-	res.render('transaction/trangthai', {
-		trans: transInfo
-	});
+  var inputID = req.params.id;
+	var transInfo = db.get('trans').find({id: inputID}).value();
+  var oldTransInfo = db.get('trans').value();
+  var errors = [];
+  if (transInfo == null) {
+    errors.push('Không tìm thấy ID này!');
+    res.render('transaction/trangthai', {
+		  errors: errors
+	  });
+  } 
+  else {
+    res.render('transaction/trangthai', {
+      trans: oldTransInfo
+    });
+  }
 };
 
 module.exports.add = function(req, res) {

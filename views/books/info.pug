@@ -1,14 +1,17 @@
-h1 Infomation of the book
+extends ../layouts/common
 
-form(action="/books/set", method="POST")
-  input(name="title", type="text")
-  input(name="id", type="hidden", value=books.id)
-  button Update
+block content
+  h4 Infomation of the book
 
-p Tên:
-  span= books.title
-p Description: 
-  span= books.des 
-form(action="/books/remove", method="POST")
-  input(name="id", type="hidden", value=books.id)
-  button Delete book
+  form(action="/books/set", method="POST")
+    input(name="title", type="text")
+    input(name="id", type="hidden", value=books.id)
+    button Update
+
+  p Tên:
+    span= books.title
+  p Description: 
+    span= books.des 
+  form(action="/books/remove", method="POST")
+    input(name="id", type="hidden", value=books.id)
+    button Delete book
